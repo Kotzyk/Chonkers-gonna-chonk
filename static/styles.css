@@ -1,0 +1,134 @@
+body {
+    background-color: blanchedalmond;
+    color: darkslateblue;
+    font-family: 'Trebuchet MS';
+}
+
+.grid-container {
+    display: grid;
+    width:80%;
+    grid-template-columns: 0.7fr 1.6fr 0.7fr; 
+    grid-template-rows: 1fr 1.5fr 0.3fr; 
+    gap: 10px 0px; 
+    grid-template-areas: 
+        "navbar1 header navbar2"
+        "main main main"
+        "footer footer footer"; 
+    justify-items: center; 
+    align-items: center; 
+}
+
+footer {
+    grid-area: footer;
+    justify-self: center;
+    align-self: center;
+    font-weight: bold;
+}
+/* Navbars */
+.navbar1 {
+    grid-area: navbar1;
+}
+
+.navbar2 {
+    grid-area: navbar2;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: slateblue;
+    font-family: 'Trebuchet MS';
+    border-radius: 20%;
+}
+  
+li a {
+    display: block;
+    margin-bottom: 10px; 
+    color: blanchedalmond; 
+    font-family: 'Trebuchet MS';
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 20%;
+}
+  
+li {
+    text-align: center;
+    border-bottom: 1px solid slateblue;
+}
+  
+li:last-child {
+    border-bottom: none;
+}
+  
+li a.active {
+    background-color: #afa2ca;
+    color: #4169E1;
+}
+  
+li a:hover:not(.active) {
+    background-color: #afa2ca;
+    color: darkslateblue;
+}
+
+/* Title of web */
+.logo-box {
+    grid-area: header;
+}
+
+.logo {
+    max-height: 30vh;
+}
+
+/* Index main content  */
+.main-content {
+    grid-area: main;
+    justify-self: center;
+    align-self: center;
+}
+
+.flex-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+.chonkerchart {
+    display: inline-block;
+    text-align: center;
+    width: 50vw;
+    height: auto;
+    white-space: nowrap;
+}
+
+#chonkerchart {
+    width: 100%;
+}
+
+.formatedradio {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background: slateblue; 
+    color: blanchedalmond;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.cat-image {
+    width: 50vw;
+    height: auto;
+    margin-top: 0px;
+}
+
+#cat-image {
+    width: 100%;
+    border-radius: 20%;
+}

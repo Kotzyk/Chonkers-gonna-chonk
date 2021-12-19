@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Chonkers gonna chonk!</title>
+
+    <link href="/static/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="grid-container">
+
+        <nav class="navbar1"> 
+            <ul>
+                <li><a href="/index">Main</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+            </ul>
+        </nav>
+
+        <div class="logo-box">
+            <img src="/static/UI/chonkersLogo.png" alt="Logo - Chonkers gonna chonk!" class="logo">
+        </div>
+        <nav class="navbar2"> 
+            {% if session.user_id %}
+                <ul>
+                    <li><a href="/logout">Log out</a></li>
+                </ul>
+            {% else %}
+                <ul>
+                    <li><a href="/login">Log in</a></li>
+                    <li><a href="/register">Register</a></li>
+                </ul>
+            {% endif %}
+        </nav>
+
+
+        <div class="main-content">
+            {% block main %} {% endblock %}
+        </div>
+
+        <footer>Harvard CS50x Final Project 2021 by Justyna Chmielinska</footer>
+
+    </div>
+</body>
+</html>
