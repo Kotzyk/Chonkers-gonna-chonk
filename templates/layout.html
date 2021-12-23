@@ -7,11 +7,15 @@
     <title>Chonkers gonna chonk!</title>
 
     <link href="/static/styles.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script> window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}">\x3C/script>')</script>
+
 </head>
+
 <body>
     <div class="grid-container">
 
-        <nav class="navbar1"> 
+        <nav class="navbar1">
             <ul>
                 <li><a href="/">Main</a></li>
                 <li><a href="/leaderboard">Leaderboard</a></li>
@@ -21,16 +25,16 @@
         <div class="logo-box">
             <img src="/static/UI/chonkersLogo.png" alt="Logo - Chonkers gonna chonk!" class="logo">
         </div>
-        <nav class="navbar2"> 
+        <nav class="navbar2">
             {% if session.user_id %}
-                <ul>
-                    <li><a href="/logout">Log out</a></li>
-                </ul>
+            <ul>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
             {% else %}
-                <ul>
-                    <li><a href="/login">Log in</a></li>
-                    <li><a href="/register">Register</a></li>
-                </ul>
+            <ul>
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
             {% endif %}
         </nav>
 
@@ -43,4 +47,5 @@
 
     </div>
 </body>
+
 </html>

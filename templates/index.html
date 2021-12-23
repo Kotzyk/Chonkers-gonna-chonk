@@ -1,25 +1,25 @@
 {% extends "layout.html" %}
 
 {% block main %}
-    <div class="flex-box">
-        <div class="cat-image"> 
-            <img src="/static/cats/00000006_025.jpg" alt="Cat image for rating" id="cat-image">
-        </div>
-
-        <div class=chonkerchart>
-            <img src="static/UI/chonkerchart.png" alt="Chart - six states of chonkness" id="chonkerchart" > 
-
-            <form action="/vote">
-                <input type="radio" id="fine" name="chonkness" value="1" class="formatedradio">
-                <input type="radio" id="chomnk" name="chonkness" value="2" class="formatedradio">
-                <input type="radio" id="heckin" name="chonkness" value="3" class="formatedradio">
-                <input type="radio" id="hefty" name="chonkness" value="4" class="formatedradio">
-                <input type="radio" id="mega" name="chonkness" value="5" class="formatedradio">
-                <input type="radio" id="ohlawd" name="chonkness" value="6" class="formatedradio">
-                <br>
-                <button type="submit">Vote!</button>
-                <button type="button" formaction="/skip">Skip</button>
-            </form>
-        </div>
+<div class="flex-box">
+    <div class="cat-image">
+        <img src="/static/cats/{{cat_id}}.jpg" alt="Cat image for rating" id="cat-image">
     </div>
+
+    <div class=chonkerchart>
+        <img src="static/UI/chonkerchart.png" alt="Chart - six states of chonkness" id="chonkerchart">
+
+        <form method="post" action="/">
+            <input type="radio" id="fine" name="chonkness" value="0" class="formatedradio" required>
+            <input type="radio" id="chomnk" name="chonkness" value="1" class="formatedradio" required>
+            <input type="radio" id="heckin" name="chonkness" value="2" class="formatedradio" required>
+            <input type="radio" id="hefty" name="chonkness" value="3" class="formatedradio" required>
+            <input type="radio" id="mega" name="chonkness" value="4" class="formatedradio" required>
+            <input type="radio" id="ohlawd" name="chonkness" value="5" class="formatedradio" required>
+            <br>
+            <button type="submit">Vote!</button>
+            <button type="submit" formaction="/skip" formnovalidate>Skip</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
