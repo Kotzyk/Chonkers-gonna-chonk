@@ -7,19 +7,33 @@
     </div>
 
     <div class=chonkerchart>
+        {% if not request.args.get("chonkness") %}
         <img src="static/UI/chonkerchart.png" alt="Chart - six states of chonkness" id="chonkerchart">
 
-        <form method="post" action="/">
+        <form action="/">
             <input type="radio" id="fine" name="chonkness" value="0" class="formatedradio" required>
             <input type="radio" id="chomnk" name="chonkness" value="1" class="formatedradio" required>
             <input type="radio" id="heckin" name="chonkness" value="2" class="formatedradio" required>
             <input type="radio" id="hefty" name="chonkness" value="3" class="formatedradio" required>
             <input type="radio" id="mega" name="chonkness" value="4" class="formatedradio" required>
             <input type="radio" id="ohlawd" name="chonkness" value="5" class="formatedradio" required>
+            <input type="hidden" name="cat_id" value="{{cat_id}}" />
             <br>
             <button type="submit">Vote!</button>
             <button type="submit" formaction="/skip" formnovalidate>Skip</button>
         </form>
+        {% else %}
+        <div>
+            <br />
+            <span> Your vote: {{user_chonk}} </span>
+            <br />
+            <span> Community rating: {{community_chonk}} </span>
+            <br />
+            <form action="/skip">
+                <button type="submit">Next cat</button>
+            </form>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

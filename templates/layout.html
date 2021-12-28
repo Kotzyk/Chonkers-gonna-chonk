@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
 
     <link href="/static/styles.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script> window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}">\x3C/script>')</script>
+    <script> window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery - 3.6.0.min.js') }}">\x3C/script>')</script>
 
 </head>
 
@@ -26,16 +27,15 @@
             <img src="/static/UI/chonkersLogo.png" alt="Logo - Chonkers gonna chonk!" class="logo">
         </div>
         <nav class="navbar2">
-            {% if session.user_id %}
-            <ul>
+            {% if session.user_id and session.user_id < 1000000000 %} <ul>
                 <li><a href="/logout">Log out</a></li>
-            </ul>
-            {% else %}
-            <ul>
-                <li><a href="/login">Log in</a></li>
-                <li><a href="/register">Register</a></li>
-            </ul>
-            {% endif %}
+                </ul>
+                {% else %}
+                <ul>
+                    <li><a href="/login">Log in</a></li>
+                    <li><a href="/register">Register</a></li>
+                </ul>
+                {% endif %}
         </nav>
 
 
