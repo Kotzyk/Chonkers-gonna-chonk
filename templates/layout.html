@@ -19,6 +19,8 @@
         <nav class="navbar1">
             <ul>
                 <li><a href="/">Main</a></li>
+            </ul>
+            <ul>
                 <li><a href="/leaderboard">Leaderboard</a></li>
             </ul>
         </nav>
@@ -28,11 +30,16 @@
         </div>
         <nav class="navbar2">
             {% if session.user_id and session.user_id < 1000000000 %} <ul>
-                <li><a href="/logout">Log out</a></li>
+                <li><a href="/profile">Change password</a></li>
+                </ul>
+                <ul>
+                    <li><a href="/logout">Log out</a></li>
                 </ul>
                 {% else %}
                 <ul>
                     <li><a href="/login">Log in</a></li>
+                </ul>
+                <ul>
                     <li><a href="/register">Register</a></li>
                 </ul>
                 {% endif %}

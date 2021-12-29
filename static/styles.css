@@ -23,6 +23,7 @@ footer {
     justify-self: center;
     align-self: end;
     font-weight: bold;
+    font-size: 12px;
 }
 /* Navbars */
 .navbar1 {
@@ -40,7 +41,6 @@ ul {
     width: 200px;
     background-color: slateblue;
     font-family: 'Trebuchet MS';
-    border-radius: 20%;
 }
   
 li a {
@@ -50,7 +50,6 @@ li a {
     font-family: 'Trebuchet MS';
     padding: 8px 16px;
     text-decoration: none;
-    border-radius: 20%;
 }
   
 li {
@@ -163,4 +162,16 @@ th, td {
 
 th {
     font-weight: bold;
+}
+
+.next {
+    margin-top: 20px;
+}
+
+.pw-changed {
+    color: darkgreen;
+}
+
+.apology {
+    text-align: center;
 }

@@ -149,5 +149,21 @@ def leaderboard():
     return render_template('leaderboard.html', z=z)
 
 
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+    pw_change = False
+
+    if request.method == "POST":
+
+        pw_hash = generate_password_hash(request.form.get("new_password"))
+
+        con.execute("UPDATE Users SET Password = ? WHERE UserId = ?",
+                    pw_hash, session["user_id"])
+        pw_change = True
+        return render_template('profile.html', pw_changed=pw_change)
+
+    return render_template('profile.html', pw_changed=pw_change)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

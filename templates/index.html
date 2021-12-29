@@ -25,13 +25,15 @@
         {% else %}
         <div>
             <br />
-            <span> Your vote: {{user_chonk}} </span>
+            <span> <i>Your vote:</i> {{user_chonk}} </span>
             <br />
-            <span> Community rating: {{community_chonk}} </span>
+            <span> <i>Community rating:</i> {{community_chonk}} </span>
             <br />
-            <form action="/skip">
-                <button type="submit">Next cat</button>
-            </form>
+            <div class="next">
+                <form action="/skip">
+                    <button type="submit">Next cat</button>
+                </form>
+            </div>
         </div>
         {% endif %}
     </div>
