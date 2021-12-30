@@ -1,8 +1,8 @@
-from cs50 import SQL
 import random
+from tempfile import mkdtemp
+from cs50 import SQL
 from flask import Flask, redirect, render_template, request, session, url_for
 from flask_session import Session
-from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
@@ -47,8 +47,8 @@ def index():
                 "SELECT ImageId FROM Ratings WHERE UserId = ?", session["user_id"])
             # parse database rows into a set
             if len(rows) > 0:
-                voted_imgs = set([int(rows[x]['ImageId'])
-                                 for x in range(len(rows))])
+                voted_imgs = {int(rows[x]['ImageId'])
+                              for x in range(len(rows))}
                 # exclude voted images from appearing again
                 remaining_ids = AVAILABLE_IMAGE_IDS - voted_imgs
                 # generate new image from remaining
@@ -57,7 +57,7 @@ def index():
         cat_id = request.args.get('cat_id')
 
     if not session.get("user_id"):
-        # if user is not logged in, give him a UserId of a very large random number to store their votes
+        # if user is not logged in, give him a UserId of a large random number to store their votes
         session["user_id"] = random.randrange(1000000000, 10000000000)
 
     if request.args.get('chonkness'):
@@ -76,7 +76,9 @@ def index():
     else:
         user_chonk_message = ""
         community_chonk_message = ""
-    return render_template('index.html', cat_id=cat_id, user_chonk=user_chonk_message, community_chonk=community_chonk_message)
+    return render_template('index.html',
+                           cat_id=cat_id, user_chonk=user_chonk_message,
+                           community_chonk=community_chonk_message)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -94,7 +96,8 @@ def login():
             "SELECT * FROM Users WHERE Username = ?", request.form.get("username"))
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["Password"], request.form.get("password")):
+        form_pw = request.form.get("password")
+        if len(rows) != 1 or not check_password_hash(rows[0]["Password"], form_pw):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
@@ -123,7 +126,8 @@ def register():
     """Register user"""
     if request.method == "POST":
 
-        if len(con.execute("SELECT * FROM Users WHERE Username = ?", request.form.get("username"))) != 0:
+        if len(con.execute("SELECT * FROM Users WHERE Username = ?",
+                           request.form.get("username"))) != 0:
             return apology("Username already exists, please choose another", 400)
 
         pw_hash = generate_password_hash(request.form.get("password"))
@@ -132,8 +136,8 @@ def register():
                     request.form.get("username"), pw_hash)
 
         return redirect("/login")
-    else:
-        return render_template("register.html")
+
+    return render_template("register.html")
 
 
 @app.route('/skip', methods=["GET", "POST"])
@@ -144,9 +148,12 @@ def skip():
 @app.route('/leaderboard')
 def leaderboard():
     row = con.execute(
-        "SELECT COUNT(DISTINCT ImageId) as votes, Username as name FROM Ratings INNER JOIN Users ON Ratings.UserId = Users.UserId GROUP BY Ratings.UserId ORDER BY votes DESC LIMIT 10")
-    z = zip(row, range(1, 11))
-    return render_template('leaderboard.html', z=z)
+        "SELECT COUNT(DISTINCT ImageId) as votes, Username as name\
+            FROM Ratings INNER JOIN Users ON Ratings.UserId = Users.UserId \
+            GROUP BY Ratings.UserId \
+            ORDER BY votes DESC LIMIT 10")
+    row_range_zip = zip(row, range(1, 11))
+    return render_template('leaderboard.html', z=row_range_zip)
 
 
 @app.route("/profile", methods=["GET", "POST"])
