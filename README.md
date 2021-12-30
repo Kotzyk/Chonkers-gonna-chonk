@@ -1,3 +1,4 @@
+[![Pylint](https://github.com/J-emi/Chonkers/actions/workflows/pylint.yml/badge.svg)](https://github.com/J-emi/Chonkers/actions/workflows/pylint.yml)
 # Chonkers gonna chonk
 ### Video Demo:  <URL HERE>
 ### Description:
