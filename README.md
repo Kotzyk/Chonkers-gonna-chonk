@@ -1,8 +1,40 @@
 # Chonkers gonna chonk
-#### Video Demo:  <URL HERE>
-#### Description:
-Chonker is a colloquial term for a fat but photogenic cat. I have made a website that allows the user to assess the thickness of the cats in the photos according to a six-point scale. It is a form of fun and a reference to internet memes. That being said, I do not support fattening animals on purpose, by malnutrition or negligence.
+### Video Demo:  <URL HERE>
+### Description:
 
-The application was written in Python using Flask framework. The files have been placed in folders according to the MVC design pattern. I also prepared a responsive layout using HTML, CSS and Grid. 
+<p align="center"> <img src="https://i.imgur.com/YftE9Vo.png"> </p>
   
-Directory /templates contains files used to create final HTML. Directory /static contains directory /UI with elements of User Interface like logo of website and chart which is a visual aid to assess fatness of cats. In /static you will also find CSS style sheet (styles.css), jquery file and directory /cats which contains different cats images. All python code for web server is in the file app.py. The database (chonkers.db) was created using sqlite3. It consists of two tables. In the first one (Users), the login details are saved. The second table (Ratings) is used to create ratings - how many photos the user has rated. 
+#### Introduction
+Chonker is a colloquial term for fat but a photogenic cat. I have made a website that allows the user to assess the thickness of the cats in the photos according to a six-point scale. It is a form of fun and a reference to [internet memes](https://knowyourmeme.com/memes/chonk-oh-lawd-he-comin). That being said, I do not support fattening animals on purpose, by malnutrition or negligence. This web-based application was created as a final project for [Harvard CS50x 2021](https://cs50.harvard.edu/x/2021). It shows the skills I acquired during the course.
+
+
+#### Technologies
+The application was written in **Python 3.10.1** using **Flask 2.0.2** framework. The files have been placed in directories according to the MVC design pattern:
+
+ * ***/templates*** - contains all files used to create final HTML.
+ * ***/static*** - contains CSS style sheet (styles.css), jquery file helpful to display small messages to users (e.g. validation of password confirmation) and two directories. In the first one /UI you may find elements of User Interface like logo of website and the chart which is a visual aid to assess fatness of cats. Second directory /cats contains 151 different cats images, which user may rate.
+ * ***app.py*** - contains all python code for web server.
+ * ***chonkers.db*** - it is database created using **sqlite3**. It consists of two tables. In the first one (Users), the login details are saved. The second table (Ratings) is used to create ratings - how many photos the user has rated.
+
+ Layout responsiveness was obtained using a Gird and relative units. The logo and colors of the website have been designed by myself. 
+
+  
+ #### Setup
+To run this project, install it locally using flask:
+```
+$ cd chonkers
+$ pip install -r requirements.txt
+$ flask run
+```
+ 
+  
+ #### How does my site work?
+ Upon entering the website, the user may register (*Register* tab), which is recommended but not necessary. Unregistered users can rate cats, but they will not be included in the ranking (*Leaderboard* tab). All you need to register is a username and password. You can change your password at any time (*Change password* tab). Registered user can log in (*Log in* tab). Images of cats are displayed randomly on the main page. Under the image there is chart of cat body-fat indexes. The user can decide which category the cat in the photo belongs to:
+ - A Fine Boi, 
+ - He Chomnk,
+ - A Heckin' Chonker,
+ - H E F T Y C H O N K, 
+ - M E G A C H O N K E R,
+ - OH LAWD HE COMIN. 
+
+ After voting, two pieces of information are displayed instead of the chonk chart - users vote and community raiting. The ranking (*Leaderboard* tab) includes the ten users who rated the highest number of photos. In the case of an error on the website, a relevant apology message is displayed.
