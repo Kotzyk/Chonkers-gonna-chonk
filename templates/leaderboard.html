@@ -1,23 +1,25 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<h2> Leaderboard </h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Score</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for row, n in z %}
-        <tr>
-            <td>{{ n }}</td>
-            <td>{{ row["name"] }}</td>
-            <td>{{ row["votes"] }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="content-container">
+    <h2> Leaderboard </h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row, n in z %}
+            <tr>
+                <td>{{ n }}</td>
+                <td>{{ row["name"] }}</td>
+                <td>{{ row["votes"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

@@ -175,3 +175,15 @@ th {
 .apology {
     text-align: center;
 }
+
+.content-container {
+    place-self: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.btn-s {
+    text-align: center;
+}

@@ -5,7 +5,7 @@
 
     <form action="profile" method="post">
         <div class="form-group">
-            <h3> Change your password:</h3>
+            <h2> Change your password:</h2>
             <br />
             <input class="form-control" name="new_password" placeholder="New password" type="password" id="new_password"
                 required minlength="6" maxlength="12">
@@ -15,7 +15,9 @@
                 id="confirm_new_password" required minlength="6" maxlength="12">
             <span id='message'></span>
         </div>
-        <button type="submit">Submit</button>
+        <div class="btn-s">
+            <button type="submit">Submit</button>
+        </div>
     </form>
     {% if pw_changed %}
     <div>
@@ -32,7 +34,4 @@
         }
     });
 </script>
-
-
-
 {% endblock %}
