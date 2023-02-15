@@ -3,3 +3,4 @@ Flask-Session
 requests
 gunicorn
 cs50
+python-dotenv

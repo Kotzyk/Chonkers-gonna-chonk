@@ -1,4 +1,6 @@
 import random
+import os
+from dotenv import load_dotenv
 from tempfile import mkdtemp
 from cs50 import SQL
 from flask import Flask, redirect, render_template, request, session, url_for
@@ -6,9 +8,10 @@ from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
-
+load_dotenv()
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+dbfile = os.environ['DB_FILE']
 CHONK_SCALE = ["A Fine Boi", "He Chomnk", "A Heckin' Chonker",
                "H E F T Y C H O N K", "M E G A C H O N K E R", "OH LAWD HE COMIN"]
 AVAILABLE_IMAGE_IDS = set(range(1, 148))
@@ -28,7 +31,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Database
-con = SQL('sqlite:///chonkers.db')
+con = SQL(f'sqlite:///{dbfile}')
 
 
 # Error message
